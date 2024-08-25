@@ -3,6 +3,8 @@ import {Await, NavLink} from '@remix-run/react';
 import {type CartViewPayload, useAnalytics} from '@shopify/hydrogen';
 import type {HeaderQuery, CartApiQueryFragment} from 'storefrontapi.generated';
 import {useAside} from '~/components/Aside';
+import {ContactForm} from './ContactForm';
+import * as styles from './Header.css';
 
 interface HeaderProps {
   header: HeaderQuery;
@@ -21,7 +23,8 @@ export function Header({
 }: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="header">
+    // <header className="header">
+    <header className={styles.header}>
       <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
         <strong>{shop.name}</strong>
       </NavLink>
@@ -32,6 +35,7 @@ export function Header({
         publicStoreDomain={publicStoreDomain}
       />
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      <ContactForm />
     </header>
   );
 }

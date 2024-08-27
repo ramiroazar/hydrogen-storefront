@@ -3,6 +3,7 @@ import {Await, NavLink} from '@remix-run/react';
 import {type CartViewPayload, useAnalytics} from '@shopify/hydrogen';
 import type {HeaderQuery, CartApiQueryFragment} from 'storefrontapi.generated';
 import {useAside} from '~/components/Aside';
+import * as styles from './Header.css';
 
 interface HeaderProps {
   header: HeaderQuery;
@@ -32,6 +33,9 @@ export function Header({
         publicStoreDomain={publicStoreDomain}
       />
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      <button className={styles.button} onClick={() => console.log('test')}>
+        Test
+      </button>
     </header>
   );
 }
